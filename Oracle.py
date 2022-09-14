@@ -1,21 +1,25 @@
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 import time
 import pyautogui
 import glob
 import os
 
 
+PATH = 'C:/Users/srher/Downloads/edgedriver_win64/msedgedriver.exe'
+url = 'http://ebs.andes.vtr.cl:8000/OA_HTML/AppsLocalLogin.jsp'
+
+def open_web():
+    driver = webdriver.Edge(PATH)
+    driver.get(url)
+    driver.maximize_window()
+    print(driver.title)
 
 
-
-
-PATH = "C:/Users/ncornejo/Desktop/Bot Python/IEDriverServer.exe"
-driver = webdriver.Ie(PATH)
-driver.get("http://ebs.andes.vtr.cl:8000/OA_HTML/AppsLocalLogin.jsp")
-
-time.sleep(5)
+########### Login ###########
 
 search = driver.find_element_by_name("usernameField").send_keys("25-09-2022")
 
@@ -104,7 +108,7 @@ pyautogui.doubleClick()
 list_of_files = glob.glob('C:/Users/ncornejo/Downloads/*') # * means all if need specific format then *.csv
 latest_file = max(list_of_files, key=os.path.getctime)
 
-os.rename(latest_file,'C:\\Users\\ncornejo\\Dropbox\\SSIS_PY\\ORACLE\\G40.tsv')
+os.rename(latest_file,'C://Users//ncornejo//Dropbox//SSIS_PY//ORACLE//G40.tsv')
 
 #CAMBIAR RESPONSABLE
 pyautogui.moveTo(263,110,5)
